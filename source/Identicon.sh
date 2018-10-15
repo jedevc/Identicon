@@ -7,9 +7,9 @@ canvas=$(( $squares * $size ))
 
 # color generation
 red=$(( RANDOM % 256 ))
-blue=$(( RANDOM % 256 ))
 green=$(( RANDOM % 256 ))
-color="rgb($red, $blue, $green)"
+blue=$(( RANDOM % 256 ))
+color="rgb($red, $green, $blue)"
 
 # svg generation
 echo "<svg viewBox='0 0 $canvas $canvas' xmlns='http://www.w3.org/2000/svg'>"
