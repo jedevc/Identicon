@@ -18,7 +18,6 @@ public class Identicon {
     for (int i = 0; i < mirror; i++) {
       for (int j = 0; j < squares; j++) {
         if (rand.nextBoolean()) {
-
           Rectangle shape = new Rectangle(i * size, j * size, size, size, color);
           shapes.add(shape);
           if (i < mirror) {
