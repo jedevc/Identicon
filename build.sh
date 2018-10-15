@@ -20,6 +20,13 @@ if [[ source/Identicon.sh -nt $BUILD/Identicon.sh ]]; then
 	chmod u+x $BUILD/Identicon.sh
 fi
 
+if [[ source/Identicon.py -nt $BUILD/Identicon.py ]]; then
+	echo "Building python..."
+	ACTION=1
+
+	cp source/Identicon.py $BUILD/Identicon.py
+fi
+
 if [[ $ACTION -eq 1 ]]; then
 	echo "Done."
 else
