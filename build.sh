@@ -1,6 +1,6 @@
 #!/bin/bash
 
 BUILD=build/
+mkdir -p $BUILD/
 
-mkdir -p $BUILD/java
-javac -d $BUILD/java java/Identicon.java
+javac -d $BUILD source/Identicon.java
