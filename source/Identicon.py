@@ -1,9 +1,13 @@
+import sys
 import random
 
-def main():
+def main(name, args):
     squares = 5
     size = 20
     canvas = squares * size
+
+    if len(args) > 0:
+        random.seed(args[0])
 
     red = random.randint(0, 256)
     green = random.randint(0, 256)
@@ -26,4 +30,4 @@ def main():
     print("</svg>")
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[0], sys.argv[1:])

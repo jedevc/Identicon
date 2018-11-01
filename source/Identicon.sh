@@ -5,6 +5,11 @@ squares=5
 size=20
 canvas=$(( $squares * $size ))
 
+# random seeding
+if [[ -n $1 ]]; then
+    RANDOM=$1
+fi
+
 # color generation
 red=$(( RANDOM % 256 ))
 green=$(( RANDOM % 256 ))

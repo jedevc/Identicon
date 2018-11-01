@@ -4,17 +4,27 @@ import java.util.Random;
 
 public class Identicon {
   public static void main(String[] args) {
-    Random rand = new Random();
+    // seeding
+    Random rand;
+    if (args.length > 0) {
+      int total = 0;
+      for (int i = 0; i < args[0].length(); i++) {
+        total += args[0].charAt(i);
+      }
+      rand = new Random(total);
+    } else {
+      rand = new Random();
+    }
 
-    int squares = 5;
-    int size = 20;
+    final int squares = 5;
+    final int size = 20;
+    final int canvas = squares * size;
+    final int mirror = squares / 2 + 1;
 
-    String color = randomColor(rand);
+    final String color = randomColor(rand);
 
+    // generation
     List<Rectangle> shapes = new ArrayList<>();
-
-    int mirror = squares / 2 + 1;
-
     for (int i = 0; i < mirror; i++) {
       for (int j = 0; j < squares; j++) {
         if (rand.nextBoolean()) {
@@ -28,7 +38,7 @@ public class Identicon {
       }
     }
 
-    int canvas = squares * size;
+    // output
     StringBuilder svg = new StringBuilder();
     svg.append(String.format("<svg viewBox='0 0 %d %d' xmlns='http://www.w3.org/2000/svg'>\n", canvas, canvas));
     svg.append(String.format("<rect x='0' y='0' width='%d' height='%d' fill='#fff' />\n", canvas, canvas));
