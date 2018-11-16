@@ -30,7 +30,7 @@ public class Identicon {
         if (rand.nextBoolean()) {
           Rectangle shape = new Rectangle(i * size, j * size, size, size, color);
           shapes.add(shape);
-          if (i < mirror) {
+          if (i < mirror - 1) {
             Rectangle shape2 = new Rectangle((squares - 1 - i) * size, j * size, size, size, color);
             shapes.add(shape2);
           }
