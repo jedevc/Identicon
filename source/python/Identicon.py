@@ -12,7 +12,7 @@ def main(name, args):
     red = random.randint(0, 256)
     green = random.randint(0, 256)
     blue = random.randint(0, 256)
-    color = f"rgb({red}, {green}, {blue}"
+    color = f"rgb({red}, {green}, {blue})"
 
     print("<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>")
     print(f"<rect x='0' y='0' width='{canvas}' height='{canvas}' fill='#fff' />")
