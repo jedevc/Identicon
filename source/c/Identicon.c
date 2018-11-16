@@ -11,7 +11,15 @@ int main(int argc, char *argv[])
 	int mirror = squares / 2 + 1;
 
 	// random seeding
-	srand(time(NULL));
+	if (argc > 1) {
+		unsigned int total = 5381;
+		for (int i = 0; argv[1][i] != '\0'; i++) {
+			total = ((total << 5) + total) + argv[1][i];
+		}
+		srand(total);
+	} else {
+		srand(time(NULL));
+	}
 
 	// generate color
 	int red = rand() % 255;
@@ -30,12 +38,12 @@ int main(int argc, char *argv[])
 			if (rand() % 2 == 1) {  // 50/50 chance
 				int x = i * size;
 				int y = j * size;
-				printf("<rect x='%d' y='%d' width='%d' height='%d' fill='%s' />",
+				printf("<rect x='%d' y='%d' width='%d' height='%d' fill='%s' />\n",
 						x, y, size, size, color);
 
 				if (i < mirror - 1) {
 					int altx = (squares - i - 1) * size;
-					printf("<rect x='%d' y='%d' width='%d' height='%d' fill='%s' />",
+					printf("<rect x='%d' y='%d' width='%d' height='%d' fill='%s' />\n",
 							altx, y, size, size, color);
 				}
 			}
