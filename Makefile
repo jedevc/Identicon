@@ -37,3 +37,9 @@ $(BUILD)/shell: $(SOURCE)/shell/Identicon.sh
 	@mkdir -p $@
 	@cp $< $@
 	@chmod u+x $@/Identicon.sh
+
+$(BUILD)/c: $(SOURCE)/c/Identicon.c
+	@echo Building c...
+
+	@mkdir -p $@
+	@gcc -o $@/Identicon -Wall $<
