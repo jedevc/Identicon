@@ -9,15 +9,14 @@ Navigate to the identicons directory, and then run the following:
 
 	$ make
 
-Then you can navigate to the build folder and execute the code:
+Then you can execute the code:
 
-	$ cd build/
-	$ java Identicon
+	$ java -cp build/java Identicon
 
 Each program will output an svg over stdout. To generate an svg file, use bash
 redirection:
 
-	$ java -cp build Identicon > identicon.svg
+	$ java -cp build/java Identicon > identicon.svg
 
 Note that all the source files, even the ones in interpreted languages, should
 not be executed from the `source/` directory. Run `build.sh` and execute them
