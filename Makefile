@@ -9,7 +9,7 @@ prebuild:
 	@mkdir -p $(BUILD)
 
 .PHONY: build
-build: $(BUILD)/Identicon.class $(BUILD)/Identicon.py $(BUILD)/Identicon.sh
+build: $(BUILD)/java/Identicon.class $(BUILD)/python/Identicon.py $(BUILD)/shell/Identicon.sh
 	@echo Done.
 
 .PHONY: clean
@@ -17,18 +17,20 @@ clean:
 	@rm -rf $(BUILD)
 	@echo Clean.
 
-$(BUILD)/Identicon.class: $(SOURCE)/Identicon.java
+$(BUILD)/%/Identicon.class: $(SOURCE)/%/Identicon.java
 	@echo Building java...
 
-	@javac -d $(BUILD) $(SOURCE)/Identicon.java
+	@javac -d $(@D) $<
 
-$(BUILD)/Identicon.py: $(SOURCE)/Identicon.py
+$(BUILD)/%/Identicon.py: $(SOURCE)/%/Identicon.py
 	@echo Building python...
 
-	@cp $(SOURCE)/Identicon.py $(BUILD)/Identicon.py
+	@mkdir -p $(@D)
+	@cp $< $(@D)
 
-$(BUILD)/Identicon.sh: $(SOURCE)/Identicon.sh
+$(BUILD)/%/Identicon.sh: $(SOURCE)/%/Identicon.sh
 	@echo Building shell...
 
-	@cp $(SOURCE)/Identicon.sh $(BUILD)/Identicon.sh
-	@chmod u+x $(BUILD)/Identicon.sh
+	@mkdir -p $(@D)
+	@cp $< $(@D)
+	@chmod u+x $@
