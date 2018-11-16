@@ -8,8 +8,11 @@ all: prebuild build
 prebuild:
 	@mkdir -p $(BUILD)
 
+DIRS=$(wildcard $(SOURCE)/*)
+OUT_DIRS=$(subst $(SOURCE)/, $(BUILD)/, $(DIRS))
+
 .PHONY: build
-build: $(BUILD)/java/ $(BUILD)/python/ $(BUILD)/shell/
+build: $(OUT_DIRS)
 	@echo Done.
 
 .PHONY: clean
@@ -17,20 +20,20 @@ clean:
 	@rm -rf $(BUILD)
 	@echo Clean.
 
-$(BUILD)/java/: $(SOURCE)/java/Identicon.java
+$(BUILD)/java: $(SOURCE)/java/Identicon.java
 	@echo Building java...
 
-	@javac -d $(@D) $<
+	@javac -d $@ $<
 
-$(BUILD)/python/: $(SOURCE)/python/Identicon.py
+$(BUILD)/python: $(SOURCE)/python/Identicon.py
 	@echo Building python...
 
-	@mkdir -p $(@D)
-	@cp $< $(@D)
+	@mkdir -p $@
+	@cp $< $@
 
-$(BUILD)/shell/: $(SOURCE)/shell/Identicon.sh
+$(BUILD)/shell: $(SOURCE)/shell/Identicon.sh
 	@echo Building shell...
 
-	@mkdir -p $(@D)
-	@cp $< $(@D)
-	@chmod u+x $@
+	@mkdir -p $@
+	@cp $< $@
+	@chmod u+x $@/Identicon.sh
